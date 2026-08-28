@@ -1,6 +1,7 @@
 package com.coresales.service.customer.service;
 
 import com.coresales.service.customer.Repository.CustomerRepository;
+import com.coresales.service.customer.Repository.CustomerRepositoryCustom;
 import com.coresales.service.customer.model.Customer;
 
 import org.springframework.stereotype.Service;
@@ -21,13 +22,13 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     @Transactional(readOnly = true)
     public List<Customer> listar() {
-        return new ArrayList<>(clienteRepository.findAll());
+        return new ArrayList<>(clienteRepository.listarClientes());
     }
 
     @Override
     @Transactional(readOnly = true)
     public Customer obtenerPorId(Long id) {
-        return clienteRepository.findById(id).orElseThrow(null);
+        return clienteRepository.buscarCliente(id);
     }
 
     @Override

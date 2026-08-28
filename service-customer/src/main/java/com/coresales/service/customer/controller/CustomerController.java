@@ -18,20 +18,20 @@ public class CustomerController {
         this.clienteService = clienteService;
     }
 
-    @GetMapping
+    @GetMapping("/listar")
     public ResponseEntity<List<Customer>> listar(){
         return  ResponseEntity.ok(clienteService.listar());
     }
     //==========================================
-// GET /api/clientes/{id}
-//==========================================
+    // GET /api/clientes/{id}
+    //==========================================
     @GetMapping("/{id}")
     public ResponseEntity<Customer> obtenerPorId(@PathVariable Long id) {
         return ResponseEntity.ok(clienteService.obtenerPorId(id));
     }
     //==========================================
-// POST /api/clientes
-//==========================================
+    // POST /api/clientes
+    //==========================================
     @PostMapping
     public ResponseEntity<Customer> crear(@RequestBody Customer request) {
         Customer response = clienteService.crear(request);
@@ -40,8 +40,8 @@ public class CustomerController {
                 .body(response);
     }
     //==========================================
-// PUT /api/clientes/{id}
-//==========================================
+    // PUT /api/clientes/{id}
+    //==========================================
     @PutMapping("/{id}")
     public ResponseEntity<Customer> actualizar(@PathVariable Long
                                                        id,@RequestBody Customer request) {
@@ -49,8 +49,8 @@ public class CustomerController {
         return ResponseEntity.ok(response);
     }
     //==========================================
-// DELETE /api/clientes/{id}
-//==========================================
+    // DELETE /api/clientes/{id}
+    //==========================================
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> eliminar(@PathVariable Long id) {
         clienteService.eliminar(id);
