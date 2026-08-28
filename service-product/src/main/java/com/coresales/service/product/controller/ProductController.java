@@ -28,11 +28,11 @@ public class ProductController {
         return ResponseEntity.ok(productService.obtenerPorId(id));
     }
     @PostMapping
-    public ResponseEntity<Product> Crear(@RequestBody Product request){
-        Product response = productService.crear((request));
+    public ResponseEntity<Product> crear(@RequestBody Product request){
+        Product response = productService.crear(request);
         return  ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Product> actualizar (@PathVariable Long id, @RequestBody Product request){
         Product response = productService.actualizar(id, request);
         return ResponseEntity.ok(response);

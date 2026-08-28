@@ -30,15 +30,6 @@ public class ProductRepositoryCustomImpl implements  ProductRepositoryCustom{
         return listProductos.isEmpty() ? null : listProductos.get(0);
     }
 
-    @Override
-    public Product crearProducto(Product product) {
-        return null;
-    }
-
-    @Override
-    public Product actualziarProducto(Long id, Product product) {
-        return null;
-    }
 
     @Override
     public void eliminaProducto(Long id) {

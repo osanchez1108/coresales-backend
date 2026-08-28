@@ -34,14 +34,19 @@ public class ProductServiceImpl implements  ProductService{
     }
 
     @Override
-    public Product crear(Product product) {
-        Product newProduct = productRepository.save(product);
-        return newProduct;
+    public Product crear(Product producto) {
+        return  productRepository.save(producto);
     }
 
     @Override
-    public Product actualizar(Long id, Product product) {
-        return null;
+    public Product actualizar(Long id, Product producto) {
+        Product productoBuscar = obtenerPorId(id);
+        if(productoBuscar == null)  return null;
+
+        producto.setFechaRegistro(productoBuscar.getFechaRegistro());
+        Product actProducto = productRepository.save(producto);
+
+        return actProducto;
     }
 
     @Override
