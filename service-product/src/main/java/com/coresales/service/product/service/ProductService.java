@@ -1,4 +1,4 @@
-package com.coresales.service.product.Service;
+package com.coresales.service.product.service;
 
 import com.coresales.service.product.model.Product;
 

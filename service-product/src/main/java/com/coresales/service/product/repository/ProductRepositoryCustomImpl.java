@@ -1,7 +1,8 @@
-package com.coresales.service.product.Repository;
+package com.coresales.service.product.repository;
 
 import com.coresales.service.product.model.Product;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.ParameterMode;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.StoredProcedureQuery;
 
@@ -22,6 +23,7 @@ public class ProductRepositoryCustomImpl implements  ProductRepositoryCustom{
     @Override
     public Product obtenerPorIdProducto(Long id) {
         StoredProcedureQuery query = entityManager.createStoredProcedureQuery("usp_Producto_ObtenerPorId",Product.class);
+        query.registerStoredProcedureParameter("ProductId", Long.class, ParameterMode.IN);
         query.setParameter("ProductId", id);
         query.execute();
         List<Product> listProductos = query.getResultList();
@@ -40,6 +42,9 @@ public class ProductRepositoryCustomImpl implements  ProductRepositoryCustom{
 
     @Override
     public void eliminaProducto(Long id) {
-
+        StoredProcedureQuery query = entityManager.createStoredProcedureQuery("usp_Venta_Eliminar", Product.class);
+        query.registerStoredProcedureParameter("ProductId", Long.class, ParameterMode.IN);
+        query.setParameter("ProductId",id);
+        query.execute();
     }
 }

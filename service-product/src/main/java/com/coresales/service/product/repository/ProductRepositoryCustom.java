@@ -1,4 +1,4 @@
-package com.coresales.service.product.Repository;
+package com.coresales.service.product.repository;
 
 import com.coresales.service.product.model.Product;
 
